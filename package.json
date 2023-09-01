@@ -1,17 +1,17 @@
 {
-  "name": "fragment-upload",
+  "name": "fast-fragment-upload",
   "version": "0.0.0",
   "packageManager": "pnpm@7.2.1",
   "description": "",
   "author": "Simon He",
   "license": "MIT",
   "funding": "https://github.com/sponsors/Simon-He95",
-  "homepage": "https://github.com/Simon-He95/fragment-upload#readme",
+  "homepage": "https://github.com/Simon-He95/fast-fragment-upload#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Simon-He95/fragment-upload.git"
+    "url": "git+https://github.com/Simon-He95/fast-fragment-upload.git"
   },
-  "bugs": "https://github.com/Simon-He95/fragment-upload/issues",
+  "bugs": "https://github.com/Simon-He95/fast-fragment-upload/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
