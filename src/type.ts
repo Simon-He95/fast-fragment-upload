@@ -1,6 +1,8 @@
 export interface Options {
   perCallback?: (fileInfo: FileInfo) => void
   lastCallback?: (filesInfo: FileInfo[]) => void
+  splitCallback?: (fileInfo: FileInfo) => void
+  chunkSize?: number
 }
 
 export interface FileInfo {

@@ -1,8 +1,10 @@
 import type { ChunkInfo } from './type'
-const CHUNK_SIZE = 5 * 1024 * 1024 // 5MB
-const THREAD_COUNT = navigator.hardwareConcurrency || 4
 
-export function fragmentFile(file: File): Promise<ChunkInfo[]> {
+const THREAD_COUNT = navigator.hardwareConcurrency || 4
+export function fragmentFile(
+  file: File,
+  CHUNK_SIZE: number = 5 * 1024 * 1024,
+): Promise<ChunkInfo[]> {
   return new Promise((resolve) => {
     const result: any = []
     let finishCount = 0

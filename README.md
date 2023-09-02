@@ -31,6 +31,7 @@ fragmentUpload('input[type="file"]', {
   options: {
     perCallback?: (fileInfo) => void; // 单个文件每一次调用
     lastCallback?: (files) => void // 所有文件最后一次总和的调用
+    chunkSize?: number // 分片大小 默认 5MB
   }
 }
 ```
