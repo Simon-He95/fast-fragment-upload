@@ -36,8 +36,6 @@
     "dist"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks",
     "build": "tsup ./src/index.ts ./src/work.ts --format cjs,esm --dts --clean --minify",
     "dev": "npm run build -- --watch src",
     "format": "prettier --write --cache .",
@@ -49,9 +47,6 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "lazy-js-utils": "^0.0.24"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.1",
     "@types/node": "^18.0.0",
@@ -60,19 +55,13 @@
     "eslint": "^8.18.0",
     "esno": "^0.16.3",
     "lint-staged": "^13.1.0",
-    "picocolors": "^1.0.0",
     "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
-    "simple-git-hooks": "^2.8.1",
     "spark-md5": "^3.0.2",
     "tsup": "^6.5.0",
     "tsx": "^3.12.1",
     "typescript": "^4.7.4",
     "vitest": "^0.15.1"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --concurrent false",
-    "commit-msg": "pnpm exec tsx scripts/verifyCommit.ts $1"
   },
   "lint-staged": {
     "*": [
