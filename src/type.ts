@@ -19,3 +19,8 @@ export interface ChunkInfo {
   index: number
   hash: string
 }
+
+export interface Options1 {
+  chunkSize?: number
+  callback?: (chunk: any) => void
+}

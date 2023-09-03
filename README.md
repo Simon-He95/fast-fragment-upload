@@ -1,6 +1,6 @@
 ## Fast Fragment Uploader
 
-> WIP: 一个简单使用并且快速的分片上传封装函数，使用 Worker 进行分片上传，Worker 开启数量根据 CPU 内核数控制，支持多个文件同时上传，每片按照 5MB 进行分片，支持控制单个文件的分片结果回调。
+> WIP: 一个简单使用并且快速的分片上传封装函数，使用 Worker 进行分片上传，Worker 开启数量根据 CPU 内核数控制，支持多个文件同时上传，每片默认按照 5MB 进行分片，可自己设置。另外提供了 2 个函数，fragmentUpload 会在单个文件全部分完片后依次回调，fragmentUpload1 则是在每分好一个片立即回调，可按照具体需求使用。
 
 ## Install
 
@@ -9,6 +9,8 @@ npm i fast-fragment-upload
 ```
 
 ## Usage
+
+### fragmentUpload
 
 ```typescript
 import { fragmentUpload } from 'fast-fragment-upload'
@@ -23,14 +25,33 @@ fragmentUpload('input[type="file"]', {
 })
 ```
 
+### fragmentUpload1
+
+```typescript
+fragmentUpload1('input[type="file"]', {
+  callback: (chunk) => {
+    // 每一个片分片的结果回调，每一个片分好立即回调，能够更快的往服务端去上传
+    console.log(chunk)
+  },
+})
+```
+
 ## Params
 
 ```typescript
-{
-  selector: string; // 选择器
+interface fragmentUploadParams {
+  selector: string // 选择器
   options: {
-    perCallback?: (fileInfo) => void; // 单个文件每一次调用
+    perCallback?: (fileInfo) => void // 单个文件每一次调用
     lastCallback?: (files) => void // 所有文件最后一次总和的调用
+    chunkSize?: number // 分片大小 默认 5MB
+  }
+}
+
+interface fragmentUpload1Params {
+  selector: string // 选择器
+  options: {
+    callback?: (chunk) => void // 获取每一片的信息
     chunkSize?: number // 分片大小 默认 5MB
   }
 }
