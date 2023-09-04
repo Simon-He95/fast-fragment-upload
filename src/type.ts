@@ -1,5 +1,5 @@
 export interface Options {
-  perCallback?: (fileInfo: FileInfo) => void
+  perCallback?: (fileInfo: FileInfo & { isDone: boolean }) => void
   lastCallback?: (filesInfo: FileInfo[]) => void
   splitCallback?: (fileInfo: FileInfo) => void
   chunkSize?: number
@@ -22,5 +22,5 @@ export interface ChunkInfo {
 
 export interface Options1 {
   chunkSize?: number
-  callback?: (chunk: any) => void
+  callback?: (chunk: ChunkInfo & { isDone: boolean }) => void
 }

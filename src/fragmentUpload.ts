@@ -20,7 +20,7 @@ export function fragmentUpload(selector: string, options?: Options) {
           lastModified: file.lastModified,
           chunks,
         }
-        perCallback && perCallback(fileInfo)
+        perCallback && perCallback({ ...fileInfo, isDone: fileCount === 0 })
         results.push(fileInfo)
         if (fileCount === 0)
           lastCallback && lastCallback(results)

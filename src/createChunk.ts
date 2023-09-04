@@ -1,6 +1,11 @@
 import SparkMD5 from 'spark-md5'
+import type { ChunkInfo } from './type'
 
-export function createChunk(file: File, index: number, chunkSize: number) {
+export function createChunk(
+  file: File,
+  index: number,
+  chunkSize: number,
+): Promise<ChunkInfo> {
   return new Promise((resolve) => {
     const start = index * chunkSize
     const end = start + chunkSize

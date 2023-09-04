@@ -39,21 +39,31 @@ fragmentUpload1('input[type="file"]', {
 ## Params
 
 ```typescript
-interface fragmentUploadParams {
-  selector: string // 选择器
-  options: {
-    perCallback?: (fileInfo) => void // 单个文件每一次调用
-    lastCallback?: (files) => void // 所有文件最后一次总和的调用
-    chunkSize?: number // 分片大小 默认 5MB
-  }
+export interface FragmentUpload {
+  perCallback?: (fileInfo: FileInfo & { isDone: boolean }) => void
+  lastCallback?: (filesInfo: FileInfo[]) => void
+  splitCallback?: (fileInfo: FileInfo) => void
+  chunkSize?: number
 }
 
-interface fragmentUpload1Params {
-  selector: string // 选择器
-  options: {
-    callback?: (chunk) => void // 获取每一片的信息
-    chunkSize?: number // 分片大小 默认 5MB
-  }
+export interface FileInfo {
+  name: string
+  type: string
+  size: number
+  lastModified: number
+  chunks: ChunkInfo[]
+}
+
+export interface ChunkInfo {
+  start: number
+  end: number
+  index: number
+  hash: string
+}
+
+export interface FragmentUpload1 {
+  chunkSize?: number
+  callback?: (chunk: ChunkInfo & { isDone: boolean }) => void
 }
 ```
 

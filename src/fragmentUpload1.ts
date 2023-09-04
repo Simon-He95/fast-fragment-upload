@@ -14,5 +14,5 @@ export function fragmentUpload1(selector: string, options: Options1) {
 //   callback: (chunk) => {
 //     console.log(chunk)
 //   },
-//   chunkSize:1024
+//   chunkSize: 1024,
 // })
