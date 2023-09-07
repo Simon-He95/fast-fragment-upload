@@ -22,5 +22,5 @@ export interface ChunkInfo {
 
 export interface Options1 {
   chunkSize?: number
-  callback?: (chunk: ChunkInfo & { isDone: boolean }) => void
+  callback?: (chunk: ChunkInfo & { isDone: boolean; remaning: number }) => void
 }

@@ -1,8 +1,9 @@
+import type { Options1 } from './type'
 const THREAD_COUNT = navigator.hardwareConcurrency || 4
 export function fragmentFile1(
   file: File,
   CHUNK_SIZE: number = 5 * 1024 * 1024,
-  callback?: (chunk: any) => void,
+  callback?: Options1['callback'],
 ): void {
   const chunkCount = Math.ceil(file.size / CHUNK_SIZE)
   const workerChunkCount = Math.ceil(chunkCount / THREAD_COUNT)
@@ -23,6 +24,7 @@ export function fragmentFile1(
         size: file.size,
         lastModified: file.lastModified,
         isDone: finishCount === THREAD_COUNT,
+        remaning: THREAD_COUNT - finishCount,
       }
       callback && callback(params)
       worker.terminate()
