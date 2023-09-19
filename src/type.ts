@@ -20,7 +20,15 @@ export interface ChunkInfo {
   hash: string
 }
 
+export type ChunkDetail = ChunkInfo & {
+  isDone: boolean
+  remaning: number
+  type: string
+  size: number
+  lastModified: number
+}
+
 export interface Options1 {
   chunkSize?: number
-  callback?: (chunk: ChunkInfo & { isDone: boolean; remaning: number }) => void
+  callback?: (chunk: ChunkDetail) => void
 }
